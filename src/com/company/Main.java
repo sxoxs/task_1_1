@@ -7,17 +7,19 @@ import java.io.InputStreamReader;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        String strLine;
+        String strLine = "";
         int resSumm, indexNum;
 
-        do {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+
+        while (true){
             resSumm = 0;
-            strLine = "";
             System.out.println("Введите 5 целых чисел: ");
             indexNum = 1;
             while (indexNum <= 5) {
                 System.out.println("\nВведите число № " + indexNum + ": ");
-                strLine = strDeleteSpace(inOnConsole());
+                strLine = strDeleteSpace(br.readLine());
 
                 if (!strLine.isEmpty() && isAllNum(strLine)) {
                     resSumm += Integer.parseInt(strLine);
@@ -27,17 +29,12 @@ public class Main {
             }
             System.out.println("Сумма чисел равна: " + resSumm);
             System.out.println("Для выхода введите q, для продолжения Enter");
-            strLine = inOnConsole();
-            if (strLine.equals("q") || strLine.equals("Q")) {
+            strLine = br.readLine();
+            if (strLine.toLowerCase().equals("q")) {
                 System.out.println("Выход");
                 break;
             }
-        } while (true);
-    }
-
-    static String inOnConsole() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        return br.readLine();
+        }
     }
 
     static String strDeleteSpace(String str) {
@@ -45,8 +42,8 @@ public class Main {
     }
 
     static Boolean isAllNum(String str) {
-        for (int i = 0; i < str.length();) {
-            switch (str.charAt(i++)) {
+        for (int i = 0; i < str.length(); i++) {
+            switch (str.charAt(i)) {
                 case '0':
                 case '1':
                 case '2':
