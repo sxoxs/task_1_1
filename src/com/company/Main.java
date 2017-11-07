@@ -12,7 +12,6 @@ public class Main {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-
         while (true){
             resSumm = 0;
             System.out.println("Введите 5 целых чисел: ");
